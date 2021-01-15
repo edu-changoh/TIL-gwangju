@@ -17,5 +17,14 @@ station_name = response['response']['body']['items'][1]['stationName']
 
 # 4. 최종 출력 문자열
 # '__의 미세먼지 농도는 __입니다. (측정소: ___)'
-print(f'{sido_name}의 미세먼지 농도는 {pm_10}입니다. (측정소: {station_name})')
+text = f'{sido_name}의 미세먼지 농도는 {pm_10}입니다. (측정소: {station_name})'
 
+
+# 5. 자신에게 텔레그램 메시지 전송 (sendMessage)
+
+token = ''
+chat_id = ''
+
+telegram_url = f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}'
+
+requests.get(telegram_url)
